@@ -31,7 +31,13 @@ export const createUser = (req, res) => {
 
   tasks.push({
     userId: id,
-    tasks: [],
+    tasks: [
+      {
+        id: 1,
+        description: null,
+        completed: false,
+      },
+    ],
   });
   return res.status(200).send({
     message: 'User added successfully',
