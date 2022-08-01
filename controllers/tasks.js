@@ -1,5 +1,3 @@
-import { tasks } from '../data/tasks.js';
-
 //GET REQUESTS
 export const getTasksByUserId = (req, res) => {
   const { userTasks } = req;

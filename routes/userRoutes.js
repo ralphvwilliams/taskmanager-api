@@ -6,7 +6,7 @@ import {
   getUsers,
   updateUser,
 } from '../controllers/users.js';
-import { createUserId, getUser } from '../middleware/users.js';
+import { getUser } from '../middleware/users.js';
 import {
   createUserValidation,
   updateUserValidation,
@@ -16,10 +16,10 @@ const router = Router();
 
 //GET ROUTES
 router.get('/users', getUsers);
-router.get('/user/:userId', getUser, getSingleUser);
+router.get('/user/login', getUser, getSingleUser);
 
 //POST AND PUT ROUTES
-router.post('/user/create', createUserValidation, createUserId, createUser);
+router.post('/user/create', createUserValidation, createUser);
 router.put('/user/:userId', updateUserValidation, getUser, updateUser);
 
 //DELETE ROUTES

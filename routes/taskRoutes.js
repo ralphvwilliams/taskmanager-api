@@ -5,7 +5,7 @@ import {
   getTasksByUserId,
   updateTask,
 } from '../controllers/tasks.js';
-import { createTaskId, getUserTasks } from '../middleware/tasks.js';
+import { getUserTasks } from '../middleware/tasks.js';
 import { getUser } from '../middleware/users.js';
 import {
   addtaskValidation,
@@ -23,7 +23,7 @@ router.post(
   addtaskValidation,
   getUser,
   getUserTasks,
-  createTaskId,
+
   addTask
 );
 

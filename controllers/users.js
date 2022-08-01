@@ -1,13 +1,12 @@
-import { users } from '../data/users.js';
-import { tasks } from '../data/tasks.js';
+import { User } from '../models/user.js';
 
 //GET REQUESTS
-export const getUsers = (req, res) => {
-  res.status(200).send({
-    message: 'Users retreived successfully',
-    data: users,
-  });
-};
+// export const getUsers = (req, res) => {
+//   res.status(200).send({
+//     message: 'Users retreived successfully',
+//     data: users,
+//   });
+// };
 
 export const getSingleUser = (req, res) => {
   res.status(200).send({
@@ -16,29 +15,25 @@ export const getSingleUser = (req, res) => {
   });
 };
 
+export const getUsers = async (req, res) => {
+  const users = await User.find();
+  return res.status(200).send({
+    message: 'Users retreived successfully',
+    data: users,
+  });
+};
+
 //POST REQUESTS
-export const createUser = (req, res) => {
+export const createUser = async (req, res) => {
   const { fullName, email, username, password } = req.body;
-  const { id } = req;
-  const user = {
-    id,
+  const user = await User.create({
     fullName,
     email,
     username,
     password,
-  };
-  users.push(user);
-
-  tasks.push({
-    userId: id,
-    tasks: [
-      {
-        id: 1,
-        description: null,
-        completed: false,
-      },
-    ],
+    tasks: [],
   });
+  user._id = req.id;
   return res.status(200).send({
     message: 'User added successfully',
     data: user,
