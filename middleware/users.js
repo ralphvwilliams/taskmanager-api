@@ -1,7 +1,7 @@
 import { User } from '../models/user.js';
 
 export const getUser = async (req, res, next) => {
-  const user = await User.findOne({ id: req.id });
+  const user = await User.findOne({ username: req.params.username });
   if (!user) {
     return res.status(400).send({
       message: 'User not found!',

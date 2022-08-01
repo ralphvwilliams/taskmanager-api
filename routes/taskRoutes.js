@@ -15,11 +15,11 @@ import {
 const router = Router();
 
 //GET ROUTES
-router.get('/user/tasks', getUser, getUserTasks, getTasksByUserId);
+router.get('/user/:username/tasks', getUser, getUserTasks, getTasksByUserId);
 
 //POST ROUTES
 router.post(
-  '/user/:userId/tasks',
+  '/user/:username/tasks',
   addtaskValidation,
   getUser,
   getUserTasks,

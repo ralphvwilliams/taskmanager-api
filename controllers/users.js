@@ -40,7 +40,7 @@ export const createUser = async (req, res) => {
       },
     ],
   });
-  req.id = user._id;
+  req.username = user.username;
   return res.status(200).send({
     message: 'User added successfully',
     data: user,

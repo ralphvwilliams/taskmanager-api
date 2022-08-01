@@ -1,25 +1,25 @@
+import { User } from '../models/user.js';
+
 //GET REQUESTS
 export const getTasksByUserId = (req, res) => {
   const { userTasks } = req;
   return res.status(200).send({
     message: 'Sucessful request',
-    data: req.user,
+    data: userTasks,
   });
 };
 
 //POST REQUESTS
-export const addTask = (req, res) => {
+export const addTask = async (req, res) => {
   const { description } = req.body;
-  const { userTasks } = req;
-  const { taskId } = req;
-  userTasks.tasks.push({
-    id: taskId,
-    description,
-    completed: false,
-  });
+  const { user } = req;
+  const update = await User.updateOne(
+    { username: req.params.username },
+    { $push: { tasks: { description: description, completed: false } } }
+  );
   return res.status(200).send({
     message: 'Task added sucessfully',
-    data: userTasks.tasks,
+    data: update,
   });
 };
 
