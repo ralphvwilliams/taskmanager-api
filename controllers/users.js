@@ -31,9 +31,16 @@ export const createUser = async (req, res) => {
     email,
     username,
     password,
-    tasks: [],
+    tasks: [
+      {
+        description: 'Walk',
+      },
+      {
+        description: 'Talk',
+      },
+    ],
   });
-  user._id = req.id;
+  req.id = user._id;
   return res.status(200).send({
     message: 'User added successfully',
     data: user,

@@ -15,7 +15,7 @@ import {
 const router = Router();
 
 //GET ROUTES
-router.get('/user/:userId/tasks', getUser, getUserTasks, getTasksByUserId);
+router.get('/user/tasks', getUser, getUserTasks, getTasksByUserId);
 
 //POST ROUTES
 router.post(

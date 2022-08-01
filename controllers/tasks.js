@@ -3,7 +3,7 @@ export const getTasksByUserId = (req, res) => {
   const { userTasks } = req;
   return res.status(200).send({
     message: 'Sucessful request',
-    data: userTasks.tasks,
+    data: req.user,
   });
 };
 
